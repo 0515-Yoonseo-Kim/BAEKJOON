@@ -7,20 +7,17 @@ def gcd(a,b):
     while b!=0:
         a,b = b, a%b
     return a
-def lcm(a,b):
-    return (a*b)//gcd(a,b)
+
 
 N = int(input())
-trees = []
-
-for _ in range(N):
-    trees.append(int(input()))
-trees.sort()
+first = int(input())
 diff = []
 for i in range(N-1):
-    diff.append(trees[i+1]-trees[i])
+    num = int(input())
+    diff.append(num-first)
+    first = num
 
-gcd_now = gcd(diff[0],diff[1])
+gcd_now = diff[0]
 
 for i in range(N-1):
 
