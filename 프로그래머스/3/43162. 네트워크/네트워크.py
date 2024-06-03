@@ -1,6 +1,6 @@
 def find(x):
     if parents[x] != x:
-        parents[x] = find(parents[x])  # Path compression
+        parents[x] = find(parents[x])
     return parents[x]
     
 def union(x, y):
@@ -19,10 +19,10 @@ def solution(n: int, computers: list):
         for j in range(n):
             if computers[i][j] == 1:
                 union(i, j)
-
-    # Recompress paths to ensure correct parent representation
+    
     for i in range(n):
         find(i)
+
 
     return len(set(parents))
 
