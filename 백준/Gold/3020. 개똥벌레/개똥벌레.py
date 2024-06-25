@@ -17,14 +17,13 @@ bottom.sort()
 top.sort()
 
 total_dict = defaultdict(int)
-min_val = N
+
 for h in range(H):
     bottom_sum = len(bottom)-bisect_right(bottom,h)
     top_sum = bisect_left(top,h+1)
     total_sum = bottom_sum+top_sum
     total_dict[total_sum]+=1
-    min_val = min(min_val, total_sum)
 
-
+min_val = min(total_dict.keys())
 print(min_val,total_dict[min_val])    
 
