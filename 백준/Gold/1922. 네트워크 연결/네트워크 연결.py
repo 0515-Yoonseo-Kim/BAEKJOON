@@ -17,9 +17,9 @@ def prim(graph: Dict[int, List[Tuple[int, int]]], start: int) -> int:
         visited.add(node)
         total_weight += weight
         
-        for w, n in graph[node]:  # w는 가중치, n은 이웃 노드
+        for n, w in graph[node]:  # (목적지, 가중치) 순서로 그래프에 저장됨
             if n not in visited:
-                heapq.heappush(queue, (w, n))
+                heapq.heappush(queue, (w, n))  # heapq에 넣을 때 (가중치, 목적지)로 넣음
     
     return total_weight
 
@@ -30,7 +30,7 @@ graph = defaultdict(list)
 
 for _ in range(M):
     a, b, c = map(int, input().split())
-    graph[a].append((c, b))  # (가중치, 목적지)
-    graph[b].append((c, a))  # (가중치, 목적지)
+    graph[a].append((b, c))  # (목적지, 가중치)로 저장
+    graph[b].append((a, c))  # (목적지, 가중치)로 저장
 
 print(prim(graph, 1))
