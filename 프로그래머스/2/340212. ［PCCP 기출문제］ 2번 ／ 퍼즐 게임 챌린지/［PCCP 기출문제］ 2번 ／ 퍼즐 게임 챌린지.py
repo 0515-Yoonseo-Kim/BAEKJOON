@@ -11,13 +11,11 @@ def puzzle_time(diffs:List[int],times:List[int],level: int) -> int:
 def solution(diffs, times, limit):
     left,right = 0, 100000
     total = 0
-    while left+1 < right:
+    while left + 1< right:
         mid = (left+right)//2
         total = puzzle_time(diffs,times,mid)
-        if total < limit:
+        if total <= limit:
             right = mid
         elif total > limit:
             left = mid
-        else:
-            return mid
     return right
