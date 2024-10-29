@@ -8,4 +8,4 @@ def solution(string):
                 stk.pop()
             else:
                 stk.append(s)
-    return 1 if not stk else 0
+    return int(not(stk))
