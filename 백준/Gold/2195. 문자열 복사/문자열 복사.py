@@ -1,4 +1,3 @@
-from collections import defaultdict
 S = input()
 P = input()
 
@@ -12,6 +11,5 @@ for p in P:
     else:
         temp = p
         cnt += 1
-
 
 print(cnt)
