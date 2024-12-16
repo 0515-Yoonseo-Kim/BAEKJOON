@@ -16,8 +16,8 @@ while True:
             N = int(input())
             angles = []
             for _ in range(N):
-                x1,y1,x2,y2 = map(int,input().split())
-                angle = calculate_angle(x1,y1,x2,y2)
+                two_dots = map(int,input().split())
+                angle = calculate_angle(*two_dots)
                 angles.append(angle/360)
             print("{:.5f}".format(round(sum(angles),5)))
     except Exception:
