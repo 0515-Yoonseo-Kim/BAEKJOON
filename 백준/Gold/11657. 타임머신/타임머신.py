@@ -1,3 +1,5 @@
+import sys
+
 N, M = map(int, input().split())
 edges = []
 INF = int(1e8)
