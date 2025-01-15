@@ -1,7 +1,9 @@
 import heapq
+import sys
 from collections import defaultdict
 from typing import List
 
+input = sys.stdin.readline
 N,M = map(int,input().split())
 graph = {i:defaultdict(int) for i in range(1,N+1)}
 INF = int(1e9)
