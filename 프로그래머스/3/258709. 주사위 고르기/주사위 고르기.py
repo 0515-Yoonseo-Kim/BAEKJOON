@@ -1,11 +1,13 @@
 from itertools import combinations, product
 from bisect import bisect_left
 
+# 6**5 = 7776
 def dice_sum_combination(dice_list):
     return [sum(p) for p in product(*dice_list)]
     
 def solution(dice):
     N = len(dice)
+    # 10C5 = 252
     dice_combination_lists = list(combinations(list(range(N)),N//2))
     
     max_winnings = 0
