@@ -1,3 +1,6 @@
+import sys
+input = sys.stdin.readline
+
 class Node:
     def __init__(self, val):
         self.val = val
@@ -39,7 +42,7 @@ class Tree:
         return sum(self.get_leaf_nodes(child) for child in node.children)
 
 if __name__ == "__main__":
-    N = int(input())  # 노드 개수
+    N = int(input())
     tree_info = list(map(int, input().split()))
     remove_node = int(input())
 
