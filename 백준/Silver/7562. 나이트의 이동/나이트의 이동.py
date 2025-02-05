@@ -1,4 +1,8 @@
+import sys
 from collections import deque
+
+input = sys.stdin.readline
+
 T = int(input())
 INF = 90001
 moves = [[-2,1],[-1,2],[1,2],[2,1],[2,-1],[1,-2],[-1,-2],[-2,-1]]
