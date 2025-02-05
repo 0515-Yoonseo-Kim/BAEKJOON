@@ -12,7 +12,8 @@ def solution(a):
         while i < len(a) - 1:
             if (a[i] == target or a[i+1] == target) and a[i] != a[i+1]:
                 length += 2
-                i += 1
+                i += 2
+                continue
             i += 1
 
         max_length = max(max_length, length)
