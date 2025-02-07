@@ -1,48 +1,38 @@
 import sys
+input = sys.stdin.readline
+
+arr = [list(map(int, input().split())) for _ in range(19)]
+
+moves = [(1, 0), (0, 1), (1, 1), (1, -1)]
+
+def check_winner(r, c, player):
+    for dr, dc in moves:
+        stones = [(r, c)]
+        nr, nc = r + dr, c + dc
+
+        while 0 <= nr < 19 and 0 <= nc < 19 and arr[nr][nc] == player:
+            stones.append((nr, nc))
+            nr += dr
+            nc += dc
+
+        
+        if len(stones) == 5:
+            pr, pc = r - dr, c - dc  
+            nr, nc = stones[-1][0] + dr, stones[-1][1] + dc
+
+            if (0 <= pr < 19 and 0 <= pc < 19 and arr[pr][pc] == player) or \
+               (0 <= nr < 19 and 0 <= nc < 19 and arr[nr][nc] == player):
+                continue
+            
+            stones.sort(key=lambda x: (x[1], x[0]))  
+            print(player)
+            print(stones[0][0] + 1, stones[0][1] + 1)
+            sys.exit()
 
 
-def bfs(x, y):
-    target = graph[x][y] # 바둑알의 색
-
-    # 우/아래/대각선 우 아래/ 대각선 우 위 => 4가지 방향을 탐색
-    for k in range(4):
-        cnt = 1 # 바둑알 수
-        nx = x + dx[k]
-        ny = y + dy[k]
-
-        # 반복문을 통해 오목이 되는지 확인
-        while 0 <= nx < 19 and 0 <= ny < 19 and graph[nx][ny] == target:
-            cnt += 1
-
-            # 오목이라면
-            if cnt == 5:
-                # 육목 체크
-                if 0 <= x - dx[k] < 19 and 0 <= y - dy[k] < 19 and graph[x - dx[k]][y - dy[k]] == target:
-                    break
-                if 0 <= nx + dx[k] < 19 and 0 <= ny + dy[k] < 19 and graph[nx + dx[k]][ny + dy[k]] == target:
-                    break
-
-                # 육목이 아니면 성공한 것으로
-                # 바둑알의 색과 위치를 출력 후 종료
-                print(target)
-                print(x + 1, y + 1)
-                exit(0)
-
-            # 이전에 이동했던 방향으로 다시 이동
-            nx += dx[k]
-            ny += dy[k]
-
-
-graph = [list(map(int, sys.stdin.readline().split())) for _ in range(19)]
-
-# → ↓ ↘ ↗
-dx = [0, 1, 1, -1]
-dy = [1, 0, 1, 1]
-
-# 반복문을 통해 바둑알이 있는 위치를 탐색
 for i in range(19):
     for j in range(19):
-        if graph[i][j] != 0:
-            bfs(i, j)
+        if arr[i][j] != 0:
+            check_winner(i, j, arr[i][j])
 
 print(0)
