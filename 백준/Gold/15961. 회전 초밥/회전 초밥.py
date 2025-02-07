@@ -1,12 +1,14 @@
-from collections import Counter
+from collections import defaultdict
 import sys
 input = sys.stdin.readline
 
 N,D,K,C = map(int,input().split())
 sushi = [int(input()) for _ in range(N)]
 
-curr_sushi = Counter(sushi[:K])
-max_kind = len(curr_sushi.keys())
+curr_sushi = defaultdict(int)
+for i in range(K):
+    curr_sushi[sushi[i]] += 1
+max_kind = len(curr_sushi)
 
 if C not in curr_sushi:
     max_kind += 1
@@ -19,7 +21,7 @@ for i in range(N):
     if curr_sushi[left] == 0:
         del curr_sushi[left]
     curr_sushi[right] += 1
-    kind = len(curr_sushi.keys())
+    kind = len(curr_sushi)
 
     if C not in curr_sushi:
         kind += 1
