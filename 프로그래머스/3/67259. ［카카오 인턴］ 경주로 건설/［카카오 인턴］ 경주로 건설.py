@@ -20,7 +20,10 @@ def solution(board):
             nc, nr = c + move[i][0], r + move[i][1]
 
             if 0 <= nc < N and 0 <= nr < N and board[nc][nr] == 0:
-                new_cost = cost + (100 if prev_dir == i or prev_dir == -1 else 600)
+                if prev_dir == i or prev_dir == -1:
+                    new_cost = cost + 100
+                else:
+                    new_cost = cost + 600
                 
                 if new_cost < dp[nc][nr][i]:
                     dp[nc][nr][i] = new_cost
