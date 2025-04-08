@@ -2,14 +2,10 @@
 # idx를 알아야 함. -> enumerate
 def solution(n, words):
     word_set = set()
-    last_word=""
-    for idx,word in enumerate(words):
-        if idx == 0:
-            word_set.add(word)
-            last_word=word[-1]
-            continue
-        if last_word != word[0] or word in word_set:
-            return idx%n + 1, idx//n+1
+    for idx, word in enumerate(words):
+        if idx > 0:
+            prev = words[idx-1]
+            if word in word_set or prev[-1] != word[0]:
+                return [(idx%n)+1,(idx//n)+1]
         word_set.add(word)
-        last_word=word[-1]
     return [0,0]
