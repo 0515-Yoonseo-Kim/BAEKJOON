@@ -7,6 +7,8 @@ def solution(gems):
     left = 0
     min_dist = len(gems)
 
+    # right를 옮기면서 개수 충족하는 경우까지 이동.
+    # 개수를 충족하는 경우에 left를 옮김
     for right in range(len(gems)):
         gem_counter[gems[right]] += 1
 
