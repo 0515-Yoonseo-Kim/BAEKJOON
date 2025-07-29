@@ -4,6 +4,6 @@ class Solution {
         for(int i = 0; i<ch.length-4;i++){
             ch[i]='*';
         }
-        return new String(ch);
+        return String.valueOf(ch);
     }
 }
